@@ -44,11 +44,30 @@ function getOperator (event) {
     }
     operator = event.target.textContent
     console.log(previousNumber)
+    checkDecimal()
     updateDisplay()
 }
 
+function checkDecimal() {
+    previousNumber = previousNumber.toString()
+    if (previousNumber.includes('.')) {
+        let decimalNumber = previousNumber.split('.')
+        console.log(decimalNumber)
+        decimalNumber = decimalNumber[1].length
+        if (decimalNumber > 5) {
+            return previousNumber = Number(previousNumber).toFixed(5)
+        }
+    }
+    else
+    previousNumber = Number(previousNumber)
+ }
+
 function updateDisplay() {
-    if (previousNumber !== '' && operator !== '' && currentNumber !== '') {
+    if (previousNumber === 'You won\'t pass!') {
+        inputValue.value = previousNumber
+        previousNumber = ''
+    }
+    else if (previousNumber !== '' && operator !== '' && currentNumber !== '') {
         inputValue.value = `${previousNumber} ${operator} ${currentNumber}`
     } 
     else if (previousNumber !== '' && operator !== '' && operator !== '=' && currentNumber === '') {
@@ -57,16 +76,11 @@ function updateDisplay() {
     else if (previousNumber !== '' && (operator === '' || operator === '=')) {
         inputValue.value = previousNumber
         console.log(typeof previousNumber)
-    } 
+    }
     else  {
         inputValue.value = currentNumber;
     }
 }
-
-
-// function getResult () {
-
-// }
 
 
 function operate(operator, currentNumber, previousNumber) {
@@ -78,7 +92,7 @@ function operate(operator, currentNumber, previousNumber) {
         case '*': 
              return previousNumber * currentNumber
         case '/': 
-             return currentNumber === 0 ? "Error" : previousNumber / currentNumber
+             return currentNumber === 0 ? 'You won\'t pass!' : previousNumber / currentNumber
         case '=':
             return previousNumber
         default:
