@@ -3,6 +3,7 @@ const numericButtons = document.getElementsByClassName('number-button')
 const equalButton = document.getElementById('equal')
 const cleanAllButton = document.getElementById('clean-all')
 const deleteButton = document.getElementById('delete')
+const dotButton = document.getElementById('dot')
 const inputValue = document.getElementById('display')
 let currentNumber = ''
 let previousNumber = ''
@@ -55,6 +56,7 @@ function updateDisplay() {
     } 
     else if (previousNumber !== '' && (operator === '' || operator === '=')) {
         inputValue.value = previousNumber
+        console.log(typeof previousNumber)
     } 
     else  {
         inputValue.value = currentNumber;
@@ -85,7 +87,8 @@ function operate(operator, currentNumber, previousNumber) {
 }
 
 // equalButton.addEventListener('click', () => {
-//     inputValue.value = previousNumber;
+//     inputValue.Value = previousNumber
+//     updateDisplay()
 // })
 
 deleteButton.addEventListener('click', () => {
@@ -93,6 +96,14 @@ deleteButton.addEventListener('click', () => {
     // console.log(typeof currentNumber, currentNumber)
     inputValue.value = currentNumber
 })
+
+dotButton.addEventListener('click', () => {
+    if(!currentNumber.includes('.')) {
+        currentNumber += '.'
+        updateDisplay()
+    }
+})
+
 
 cleanAllButton.addEventListener('click', () => {
     operator = ''
