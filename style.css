@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Doto:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Vidaloka&display=swap');
+
+
+* {
+    font-family: 'Chakra Petch';
+    font-weight: 500;
+    font-size: 18px;
+}
+
+body {
+    min-height: 100vh;
+    max-width: 100vw;
+    /* font-family: 'Plus Jakarta Sans', sans-serif; */
+    font-size: 20px;
+    background: radial-gradient(circle, rgba(25, 36, 57, 0.816), rgb(26, 24, 19));
+    --buttons-color: rgb(174, 227, 174);
+    --text-color: azure;
+    box-sizing: border-box;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 280px;
+    padding: 30px;
+    margin: auto;
+    margin-top: 300px;
+    border-radius: 20px;
+    gap: 10px;
+    border: 5px solid var( --buttons-color);
+    box-shadow: 0px 0px 50px rgb(93, 169, 153);
+    position: relative;
+}
+
+
+.buttons-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    
+    
+}
+
+.buttons-row-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+button {
+    background-color: transparent;
+    border-radius: 5px;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border: 2px solid var( --buttons-color);
+    color: var( --text-color);
+    cursor: pointer;
+}
+
+.operator-button,
+#clean-all,
+#delete,
+#equal {
+    background-color: var( --buttons-color);
+    color: rgb(84, 83, 83);
+    font-size: 20px;
+}
+
+#clean-all,
+#equal {
+    width: 130px;
+}
+
+button:hover {
+    box-shadow: 0px 0px 5px white;
+}
+
+#display {
+    /* width: 100%; */
+    width: 230px;
+    padding: 20px;
+    font-weight: 600;
+    text-align: right;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: azure;
+    border: 2px solid var(--buttons-color);
+    border: none;
+}
+
+
+
