@@ -1,6 +1,5 @@
 const operatorButtons = document.getElementsByClassName('operator-button')
 const numericButtons = document.getElementsByClassName('number-button')
-const equalButton = document.getElementById('equal')
 const cleanAllButton = document.getElementById('clean-all')
 const deleteButton = document.getElementById('delete')
 const dotButton = document.getElementById('dot')
@@ -25,13 +24,13 @@ Array.from(operatorButtons).forEach(button => {
 
 function getInputeValue(event) {
     currentNumber += event.target.textContent
-    console.log(currentNumber)
-    console.log(previousNumber)
+    // console.log(currentNumber)
+    // console.log(previousNumber)
     updateDisplay()
 }
 
 function getOperator (event) {
-    console.log(operator)
+    // console.log(operator)
     if (previousNumber === '') {
         previousNumber = Number(currentNumber)
         currentNumber = ''
@@ -43,7 +42,7 @@ function getOperator (event) {
         operator = ''
     }
     operator = event.target.textContent
-    console.log(previousNumber)
+    // console.log(typeof previousNumber)
     checkDecimal()
     updateDisplay()
 }
@@ -52,18 +51,16 @@ function checkDecimal() {
     previousNumber = previousNumber.toString()
     if (previousNumber.includes('.')) {
         let decimalNumber = previousNumber.split('.')
-        console.log(decimalNumber)
+        // console.log(decimalNumber)
         decimalNumber = decimalNumber[1].length
         if (decimalNumber > 5) {
             return previousNumber = Number(previousNumber).toFixed(5)
         }
     }
-    else
-    previousNumber = Number(previousNumber)
  }
 
 function updateDisplay() {
-    if (previousNumber === 'You won\'t pass!') {
+    if (previousNumber === 'You shall not pass!') {
         inputValue.value = previousNumber
         previousNumber = ''
     }
@@ -75,7 +72,7 @@ function updateDisplay() {
     } 
     else if (previousNumber !== '' && (operator === '' || operator === '=')) {
         inputValue.value = previousNumber
-        console.log(typeof previousNumber)
+        // console.log(typeof previousNumber)
     }
     else  {
         inputValue.value = currentNumber;
@@ -86,13 +83,13 @@ function updateDisplay() {
 function operate(operator, currentNumber, previousNumber) {
     switch(operator) {
         case '+': 
-            return previousNumber + currentNumber
+            return Number(previousNumber) + currentNumber
         case '-':
             return previousNumber - currentNumber
         case '*': 
              return previousNumber * currentNumber
         case '/': 
-             return currentNumber === 0 ? 'You won\'t pass!' : previousNumber / currentNumber
+             return currentNumber === 0 ? 'You shall not pass!' : previousNumber / currentNumber
         case '=':
             return previousNumber
         default:
@@ -100,10 +97,6 @@ function operate(operator, currentNumber, previousNumber) {
     }
 }
 
-// equalButton.addEventListener('click', () => {
-//     inputValue.Value = previousNumber
-//     updateDisplay()
-// })
 
 deleteButton.addEventListener('click', () => {
     currentNumber = currentNumber.slice(0, currentNumber.length - 1)
